@@ -1,16 +1,26 @@
+import { Helper } from 'dxf'
+
 function readFile(event: Event): void {
-    console.log(event);
     var file = event.target as HTMLInputElement;
     if (file) {
         var fileList = file.files;
         var reader = new FileReader();
         if (fileList && fileList.length > 0) {
-            reader.readAsText(fileList[0]);
-            reader.onload = () => {
-                var preView = document.querySelector('#preview');
-                if (preView) {
-                    preView.textContent = reader.result as string;
-                }
+            reader.readAsBinaryString(fileList[0])
+            reader.onload = onLoadFile
+        }
+    }
+}
+
+function onLoadFile(event: Event): void {
+    var reader = event.target as FileReader
+    if (reader) {
+        if (reader.readyState === 2) {
+            var dxfContents = reader.result as string;
+            var helper = new Helper(dxfContents);
+            var svgContainer = document.querySelector('#svg');
+            if (svgContainer) {
+                svgContainer.innerHTML = helper.toSVG();
             }
         }
     }
