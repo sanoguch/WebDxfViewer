@@ -12,8 +12,10 @@
   "license": "ISC",
   "devDependencies": {
     "@types/dxf": "^4.6.0",
+    "@types/three": "^0.140.0",
     "dxf": "^4.6.3",
     "html-webpack-plugin": "^5.5.0",
+    "three": "^0.141.0",
     "ts-loader": "^9.3.0",
     "typescript": "^4.6.4",
     "webpack": "^5.72.1",
