@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "watch": "webpack -w"
+    "watch": "webpack -w",
+    "lint-fix": "eslint --fix './src/**/*.{js,ts}' && prettier --write './src/**/*.{js,ts}'"
   },
   "keywords": [],
   "author": "",
@@ -13,8 +14,13 @@
   "devDependencies": {
     "@types/dxf": "^4.6.0",
     "@types/three": "^0.140.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
     "dxf": "^4.6.3",
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
     "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.6.2",
     "three": "^0.141.0",
     "ts-loader": "^9.3.0",
     "typescript": "^4.6.4",
