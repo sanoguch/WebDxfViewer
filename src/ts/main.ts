@@ -35,9 +35,9 @@ class Main {
     if (reader) {
       if (reader.readyState === 2) {
         const dxfContents = reader.result as string;
-        this.blueprint.readDxfFile(dxfContents);
-
+        this.blueprint = new Blueprint(dxfContents);
         if (this.plotter) {
+          this.blueprint.draw(this.plotter);
           this.plotter.render();
         }
       }
@@ -45,7 +45,7 @@ class Main {
   }
 
   private plotter: Plotter | null = null;
-  private blueprint: Blueprint = new Blueprint();
+  private blueprint: Blueprint | null = null;
 }
 
 const main: Main = new Main();
