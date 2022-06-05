@@ -1,3 +1,4 @@
+import { Box2 } from 'vecks'
 import * as Entities from "./handlers/entities";
 import * as Information from "./Information";
 
@@ -17,7 +18,7 @@ export default class Helper {
   denormalise(): Entities.Entity[] | null;
   group(): Entities.LayerGroupedEntities | null;
   toSVG(): Information.SVG;
-  toPolylines(): Information.Polyline[];
+  toPolylines(): {bbox: Box2, polylines: Information.Polyline[]};
 }
 
 export function parseValue(type: number, value: any): number;
