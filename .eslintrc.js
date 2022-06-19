@@ -24,5 +24,9 @@ module.exports = {
   },
   // 上位ディレクトリにある親のeslintrcを参照しないようにする
   root: true, 
-  rules: {}
+  // https://stackoverflow.com/questions/68802881/get-rid-of-is-defined-but-never-used-in-function-parameter
+  rules: {
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+  }
 }
