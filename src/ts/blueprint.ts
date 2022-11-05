@@ -8,7 +8,6 @@ export class Blueprint {
 
   public draw(plotter: Plotter): void {
     const { bbox, polylines } = this.dxfHelper.toPolylines();
-    console.log(bbox);
 
     polylines.forEach((polyline) => {
       const vertices = polyline.vertices.map((vertex) => {
@@ -17,7 +16,7 @@ export class Blueprint {
       const rgb = (polyline.rgb[0] << 16) | (polyline.rgb[1] << 8) | polyline.rgb[2];
       plotter.drawPolylines(vertices, rgb);
     });
-    plotter.setViewport(bbox.min.x, bbox.min.y, bbox.max.x, bbox.max.y, true);
+    plotter.setImageSize(bbox.min.x, bbox.min.y, bbox.max.x, bbox.max.y);
   }
 
   private dxfHelper: Helper;
